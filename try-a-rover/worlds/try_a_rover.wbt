@@ -2679,3 +2679,5 @@ DEF ROVER DifferentialWheels {
   encoderResolution 2.5477707
 }
 
+# Supervisor
+Supervisor { controller "sim_supervisor" }
