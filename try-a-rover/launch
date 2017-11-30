@@ -1,0 +1,15 @@
+#!/bin/bash
+
+WORLD=try_a_rover
+
+killall roscore
+killall webots-bin
+killall jupyter-notebook
+killall python
+
+source /opt/ros/indigo/setup.bash
+
+roscore&
+~/webots/webots --mode=realtime --minimize --start-streaming-server ./world/$WORLD.wbt &
+cd ../streaming_viewer && ./tserv . &
+cd ./notebooks && jupyter notebook --no-browser --ip='*' &
