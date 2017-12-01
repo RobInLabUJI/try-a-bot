@@ -47,7 +47,7 @@ class Rover():
 		while self._controllerName is None:
 		    rospy.sleep(1.0)
 		sb.unregister()
-		self._timeStepClient = rospy.ServiceProxy(self._controllerName+"/robot/time_step",robot_set_time_step)
+		#self._timeStepClient = rospy.ServiceProxy(self._controllerName+"/robot/time_step",robot_set_time_step)
 		
 		deviceName = "S1"
 		enableSensorClient = rospy.ServiceProxy(self._controllerName+'/'+deviceName+'/enable',sensor_enable)
@@ -74,13 +74,13 @@ class Rover():
 		#self._lwSub = rospy.Subscriber(self._controllerName+'/differential_wheels/lwheel',Float64Stamped,self._lwCallback)
 		#self._rwSub = rospy.Subscriber(self._controllerName+'/differential_wheels/rwheel',Float64Stamped,self._rwCallback)
 		
-	def move(self,leftSpeed,rightSpeed,t=1):
+	def move(self,leftSpeed,rightSpeed,t=0.032):
 		""" Make the robot move for an amount of time.
 		
 		Args:
 			leftSpeed (int): left motor velocity (-100, +100)
 			rightSpeed (int): right motor velocity (-100, +100)
-			t (Optional[float]): time in seconds (default 1)
+			t (Optional[float]): time in seconds (default 32 ms)
 		"""
 		if leftSpeed > 100:
 			leftSpeed = 100
@@ -112,10 +112,11 @@ class Rover():
 
 
 	def _sleep(self,t):
-		now = rospy.get_time()
-		endTime = now + t
-		r = rospy.Rate(self._rate)
-		while rospy.get_time() < endTime:
-			self._timeStepClient(self._TIME_STEP)
-			r.sleep()
+		rospy.sleep(t)
+		#now = rospy.get_time()
+		#endTime = now + t
+		#r = rospy.Rate(self._rate)
+		#while rospy.get_time() < endTime:
+		#	self._timeStepClient(self._TIME_STEP)
+		#	r.sleep()
 			
