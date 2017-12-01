@@ -1,0 +1,17 @@
+#!/bin/bash
+
+WORLD=try_soccer
+
+killall roscore
+killall webots-bin
+killall jupyter-notebook
+killall python
+
+source /opt/ros/indigo/setup.bash
+export PYTHONPATH=$HOME/try-a-bot:$PYTHONPATH
+export PATH=$HOME/try-a-bot/scripts:$PATH
+
+roscore&
+~/webots/webots --mode=realtime --minimize --start-streaming-server ./worlds/$WORLD.wbt &
+cd ../streaming_viewer && ./tserv . &
+cd ./notebooks && jupyter notebook --no-browser --ip='*' &
