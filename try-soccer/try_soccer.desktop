@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=try_soccer
+Comment=
+Exec=/home/user/try-a-bot/try-soccer/launch
+Icon=/home/user/try-a-bot/try-soccer/icon.png
+Path=/home/user/try-a-bot/try-soccer
+Terminal=false
+StartupNotify=false

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=try_a_rover
+Comment=
+Exec=/home/user/try-a-bot/try-a-rover/launch
+Icon=/home/user/try-a-bot/try-a-rover/icon.png
+Path=/home/user/try-a-bot/try-a-rover
+Terminal=false
+StartupNotify=false
