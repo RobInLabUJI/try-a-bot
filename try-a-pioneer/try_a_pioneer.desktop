@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=try_a_pioneer
+Comment=
+Exec=/home/user/try-a-bot/try-a-pioneer/launch
+Icon=/home/user/try-a-bot/try-a-pioneer/icon.png
+Path=/home/user/try-a-bot/try-a-pioneer
+Terminal=false
+StartupNotify=false
