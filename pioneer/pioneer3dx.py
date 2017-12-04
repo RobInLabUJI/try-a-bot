@@ -185,10 +185,14 @@ def pose():
     print('th: %5.2f' % _ground_truth[2])
 
 def _enableMotor(w,v_ini,p_ini):
-    vp = _rospy.ServiceProxy(_controllerName+'/'+w+'/set_velocity',_motor_set_velocity)
-    pp = _rospy.ServiceProxy(_controllerName+'/'+w+'/set_position',_motor_set_position)
-    vp(v_ini)
-    pp(p_ini)
+    try:
+        vp = _rospy.ServiceProxy(_controllerName+'/'+w+'/set_velocity',_motor_set_velocity)
+        pp = _rospy.ServiceProxy(_controllerName+'/'+w+'/set_position',_motor_set_position)
+        vp(v_ini)
+        pp(p_ini)
+    except _rospy.ServiceException:
+        vp = None
+        pp = None
     return vp, pp
 
 def _enableEncoder(deviceName,cb):
