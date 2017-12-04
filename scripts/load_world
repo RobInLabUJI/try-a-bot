@@ -1,0 +1,6 @@
+#!/bin/bash
+
+WORLD=$1
+echo "Loading world $WORLD..."
+rostopic pub --once /load_world std_msgs/String "/home/webots/try-a-bot/try-a-pioneer/worlds/uji_amr_$WORLD.wbt"
+echo "Done. Please remember to create your robot variable again."
