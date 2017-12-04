@@ -115,3 +115,5 @@ Supervisor { controller "set_mode" }
 
 Supervisor { controller "ball_spawner" }
 
+Supervisor { controller "sim_supervisor" }
+

@@ -77,3 +77,4 @@ WoodenBox {
 
 Supervisor { controller "set_mode" }
 
+Supervisor { controller "sim_supervisor" }
