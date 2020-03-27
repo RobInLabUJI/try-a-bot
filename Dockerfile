@@ -76,18 +76,21 @@ RUN pip3 install --upgrade pip setuptools \
 RUN pip3 install bash_kernel \
   && python3 -m bash_kernel.install
   
-ADD index.ipynb ${HOME}
-RUN chown jovyan.jovyan ${HOME}/index.ipynb
-
 RUN mkdir -p ${HOME}/.config
 RUN mkdir -p ${HOME}/.config/Cyberbotics
-ADD Webots-R2020a.conf ${HOME}/.config/Cyberbotics
-RUN chown jovyan.jovyan ${HOME}/.config/Cyberbotics/Webots-R2020a.conf
+COPY Webots-R2020a.conf ${HOME}/.config/Cyberbotics
+RUN chown -R jovyan.jovyan ${HOME}/.config
 
-COPY try-a-pioneer ${HOME}/try-a-pioneer
-RUN chown -R jovyan.jovyan ${HOME}/try-a-pioneer
+COPY pioneer3dx.wbt index.ipynb controller.ipynb ${HOME}/
+RUN chown jovyan.jovyan ${HOME}/*.wbt
+RUN chown jovyan.jovyan ${HOME}/*.ipynb
 
 CMD ["jupyter", "lab", "--no-browser", "--ip=0.0.0.0", "--NotebookApp.token=''"]
+
+ENV WEBOTS_HOME ${HOME}/webots
+ENV LD_LIBRARY_PATH /usr/lib/x86_64-linux-gnu:/usr/lib/i386-linux-gnu:/usr/local/nvidia/lib:/usr/local/nvidia/lib64:${WEBOTS_HOME}/lib/controller
+ENV PYTHONPATH ${WEBOTS_HOME}/lib/controller/python36
+ENV PYTHONIOENCODING UTF-8
 
 USER ${NB_USER}
 
