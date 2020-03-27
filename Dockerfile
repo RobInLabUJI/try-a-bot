@@ -79,6 +79,11 @@ RUN pip3 install bash_kernel \
 ADD index.ipynb ${HOME}
 RUN chown jovyan.jovyan ${HOME}/index.ipynb
 
+RUN mkdir -p ${HOME}/.config
+RUN mkdir -p ${HOME}/.config/Cyberbotics
+ADD Webots-R2020a.conf ${HOME}/.config/Cyberbotics
+RUN chown jovyan.jovyan ${HOME}/.config/Cyberbotics/Webots-R2020a.conf
+
 CMD ["jupyter", "lab", "--no-browser", "--ip=0.0.0.0", "--NotebookApp.token=''"]
 
 USER ${NB_USER}

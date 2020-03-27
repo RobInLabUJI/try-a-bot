@@ -9,7 +9,7 @@ docker run --rm -it \
     --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" \
     -p 1234:1234 \
     -p 8888:8888 \
-    webots-docker:R2020a
+    try-a-bot
 
 xhost -local:root
 
