@@ -1,4 +1,0 @@
-#!/bin/bash
-echo "Restarting..."
-rostopic pub --once /restart_sim std_msgs/Empty > /dev/null
-echo "Done. Please remember to create your robot variable again."

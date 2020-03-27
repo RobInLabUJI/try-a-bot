@@ -1,7 +1,0 @@
-#!/bin/bash
-
-killall roscore
-killall webots-bin
-killall jupyter-notebook
-killall python
-

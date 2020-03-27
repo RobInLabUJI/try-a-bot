@@ -1,7 +1,0 @@
-#!/bin/bash
-
-cp ../try-a-rover/*.desktop ~/Desktop
-cp ../try-an-epuck/*.desktop ~/Desktop
-cp ../try-soccer/*.desktop ~/Desktop
-cp ../try-robocup-jr/*.desktop ~/Desktop
-cp ../try-a-pioneer/*.desktop ~/Desktop
