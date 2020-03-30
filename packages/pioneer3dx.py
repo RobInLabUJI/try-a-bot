@@ -14,7 +14,9 @@ def init():
     global _rightMotor
     global _timestep
     global _isInitialized
-
+    global _leftEncoder
+    global _rightEncoder
+    
     if not _isInitialized:
         _isInitialized = True
         _robot = Robot()
@@ -23,6 +25,10 @@ def init():
         _rightMotor = _robot.getMotor('right wheel')
         _leftMotor.setPosition(float('+inf'))
         _rightMotor.setPosition(float('+inf'))
+        _leftEncoder = _robot.getPositionSensor('left wheel sensor')
+        _leftEncoder.enable(_timestep)
+        _rightEncoder = _robot.getPositionSensor('right wheel sensor')
+        _rightEncoder.enable(_timestep)
         move(0,0)
     
 def move(ls,rs):
@@ -56,4 +62,5 @@ def stop():
     """
     move(0,0)
     
-    
+def encoders():
+    return (_leftEncoder.getValue(), _rightEncoder.getValue())
