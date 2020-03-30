@@ -79,12 +79,17 @@ RUN pip3 install bash_kernel \
 RUN pip3 install ipywidgets \
   && jupyter nbextension enable --py widgetsnbextension
 
-RUN jupyter labextension install @jupyter-widgets/jupyterlab-manager
+RUN npm cache clean -f \
+ && npm install -g n \
+ && n stable
+
+RUN jupyter labextension install @jupyter-widgets/jupyterlab-manager@2.0
 
 RUN mkdir -p ${HOME}/.config
 RUN mkdir -p ${HOME}/.config/Cyberbotics
 COPY Webots-R2020a.conf ${HOME}/.config/Cyberbotics
 RUN chown -R jovyan.jovyan ${HOME}/.config
+RUN chown -R jovyan.jovyan ${HOME}/.jupyter
 
 CMD ["jupyter", "lab", "--no-browser", "--ip=0.0.0.0", "--NotebookApp.token=''"]
 
