@@ -1,6 +1,6 @@
 from controller import *
 
-import time
+import math, time
 
 _isInitialized = False
 
@@ -16,6 +16,8 @@ def init():
     global _isInitialized
     global _leftEncoder
     global _rightEncoder
+    global _compass
+    global _gps
     
     if not _isInitialized:
         _isInitialized = True
@@ -29,6 +31,10 @@ def init():
         _leftEncoder.enable(_timestep)
         _rightEncoder = _robot.getPositionSensor('right wheel sensor')
         _rightEncoder.enable(_timestep)
+        _compass = _robot.getCompass('compass')
+        _compass.enable(_timestep)
+        _gps = _robot.getGPS('gps')
+        _gps.enable(_timestep)
         move(0,0)
     
 def move(ls,rs):
@@ -63,4 +69,20 @@ def stop():
     move(0,0)
     
 def encoders():
-    return (_leftEncoder.getValue(), _rightEncoder.getValue())
+    if not _isInitialized:
+        print('Not initialized, please call the function "p3dx.init()".')
+        return (float('NaN'), float('NaN'))
+    else:
+        _robot.step(_timestep)
+        return (_leftEncoder.getValue(), _rightEncoder.getValue())
+
+def pose():
+    if not _isInitialized:
+        print('Not initialized, please call the function "p3dx.init()".')
+        return (float('NaN'), float('NaN'), float('NaN'))
+    else:
+        _robot.step(_timestep)
+        position = _gps.getValues()
+        north = _compass.getValues()
+        bearing = math.atan2(north[0], north[2]);
+        return (position[0], position[2], bearing)
