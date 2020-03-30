@@ -77,7 +77,7 @@ RUN pip3 install bash_kernel \
   && python3 -m bash_kernel.install
 
 RUN pip3 install ipywidgets \
-  && jupyter nbextension enable --py widgetsnbextension \
+  && jupyter nbextension enable --py widgetsnbextension
 
 RUN jupyter labextension install @jupyter-widgets/jupyterlab-manager
 
