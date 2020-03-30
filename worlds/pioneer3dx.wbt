@@ -1,0 +1,77 @@
+#VRML_SIM R2020a utf8
+WorldInfo {
+  info [
+    "Pioneer 3DX (Adept Mobile Robots)"
+    "This two-wheel, two-motor differential drive robot has in addition a rear caster wheel"
+    "It is programmed to perform a simple obstacle avoidance behavior based on the values sensed by its 16 sonars"
+  ]
+  title "Pioneer 3-DX with extern controller"
+  basicTimeStep 8
+}
+Viewpoint {
+  fieldOfView 0.660595
+  orientation -0.552538 -0.786715 -0.275286 1.21012
+  position -6.14776 5.43821 3.42702
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+  luminosity 0.5
+  castShadows FALSE
+}
+
+FloorLight {
+  translation 0.351337 0 1.184194
+  pointLightAmbientIntensity 1
+  pointLightCastShadows TRUE
+}
+
+RectangleArena {
+  floorSize 8 8
+  floorTileSize 4 4
+  wallThickness 0.1
+  wallHeight 0.4
+  wallAppearance PBRAppearance {
+    baseColorMap ImageTexture {
+      url [
+        "textures/red_brick_wall.jpg"
+      ]
+    }
+    roughness 1
+    metalness 0
+    textureTransform TextureTransform {
+      scale 11 13
+    }
+  }
+}
+
+DEF PIONEER_3DX Pioneer3dx {
+  translation 0.0 0.0975 0.0
+  rotation 0 1 0 1.5708
+  controller "<extern>"
+  synchronization FALSE
+  extensionSlot [
+    Compass {
+      translation 0 0 0
+    }
+    GPS {
+      translation 0 0 0
+    }
+  ]
+}
+
+CardboardBox {
+  translation -1.382041 0.3 3.17641
+}
+
+WoodenBox {
+  translation 3.28359 0.3 3.08068
+}
+
+WoodenBox {
+  translation 1.87377 0.3 -3.11289
+}
+
+WoodenBox {
+  translation -2.77958 0.3 -3.05296
+}
