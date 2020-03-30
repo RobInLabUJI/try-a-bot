@@ -75,7 +75,17 @@ RUN pip3 install --upgrade pip setuptools \
 
 RUN pip3 install bash_kernel \
   && python3 -m bash_kernel.install
-  
+
+RUN apt-get update \
+   && apt-get install -yq --no-install-recommends \
+      nodejs \
+   && apt-get clean \
+   && rm -rf /var/lib/apt/lists/*
+
+RUN pip3 install ipywidgets \
+  && jupyter nbextension enable --py widgetsnbextension \
+  && jupyter labextension install @jupyter-widgets/jupyterlab-manager
+
 RUN mkdir -p ${HOME}/.config
 RUN mkdir -p ${HOME}/.config/Cyberbotics
 COPY Webots-R2020a.conf ${HOME}/.config/Cyberbotics
