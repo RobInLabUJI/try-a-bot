@@ -1,5 +1,7 @@
 from controller import *
 
+import time
+
 _isInitialized = False
 
 def init():
@@ -38,3 +40,20 @@ def move(ls,rs):
         _leftMotor.setVelocity(ls)
         _rightMotor.setVelocity(rs)
         _robot.step(_timestep)
+        
+def sleep(t):
+    """ Program pause (the robot keeps moving if the speeds are not zero).
+
+    Args:
+        t (float): seconds
+    """
+    time.sleep(t)
+    
+def stop():
+    """ Stop the robot.
+
+    Args:
+    """
+    move(0,0)
+    
+    
