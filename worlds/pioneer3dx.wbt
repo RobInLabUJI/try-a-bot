@@ -23,7 +23,6 @@ TexturedBackgroundLight {
 
 FloorLight {
   translation 0.351337 0 1.184194
-  pointLightAmbientIntensity 1
   pointLightCastShadows TRUE
 }
 
@@ -67,12 +66,15 @@ CardboardBox {
 
 WoodenBox {
   translation 3.28359 0.3 3.08068
+  name "box 1"
 }
 
 WoodenBox {
   translation 1.87377 0.3 -3.11289
+  name "box 2"
 }
 
 WoodenBox {
   translation -2.77958 0.3 -3.05296
+  name "box 3"
 }

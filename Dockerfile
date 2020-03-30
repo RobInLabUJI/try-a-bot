@@ -81,10 +81,6 @@ RUN mkdir -p ${HOME}/.config/Cyberbotics
 COPY Webots-R2020a.conf ${HOME}/.config/Cyberbotics
 RUN chown -R jovyan.jovyan ${HOME}/.config
 
-COPY pioneer3dx.wbt index.ipynb controller.ipynb ${HOME}/
-RUN chown jovyan.jovyan ${HOME}/*.wbt
-RUN chown jovyan.jovyan ${HOME}/*.ipynb
-
 CMD ["jupyter", "lab", "--no-browser", "--ip=0.0.0.0", "--NotebookApp.token=''"]
 
 ENV WEBOTS_HOME ${HOME}/webots
@@ -93,5 +89,7 @@ ENV PYTHONPATH ${WEBOTS_HOME}/lib/controller/python36
 ENV PYTHONIOENCODING UTF-8
 
 USER ${NB_USER}
+
+WORKDIR ${HOME}/work
 
 EXPOSE 1234
