@@ -7,6 +7,10 @@ import rpyc
 _isInitialized = False
 _c = rpyc.connect("localhost", 18861)
 
+def simulationReset():
+    _robot.simulationReset():
+    _isInitialized = False
+    
 def init():
     """Initialization.
 
