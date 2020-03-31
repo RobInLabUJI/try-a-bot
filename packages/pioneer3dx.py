@@ -7,8 +7,8 @@ import rpyc
 _isInitialized = False
 _c = rpyc.connect("localhost", 18861)
 
-def simulationReset():
-    _robot.worldReload()
+def restartSimulation():
+    _c.root.restartSimulation()
     #_isInitialized = False
     #_c = rpyc.connect("localhost", 18861)
     

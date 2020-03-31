@@ -13,6 +13,13 @@ class RobotService(rpyc.Service):
         # (to finalize the service, if needed)
         pass
         
+    def restartSimulation():
+        global t
+        exposed_robot.worldReload()
+        t.close()
+        t = ThreadedServer(RobotService(), port=18861, protocol_config={'allow_public_attrs': True,})
+        t.start()
+        
     exposed_robot = Supervisor()
     
 if __name__ == "__main__":
