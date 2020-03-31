@@ -15,7 +15,7 @@ class RobotService(rpyc.Service):
         
     def restartSimulation(self):
         global t
-        self.exposed_robot.worldReload()
+        self.exposed_robot.simulationReset()
         t.close()
         t = ThreadedServer(RobotService(), port=18861, protocol_config={'allow_public_attrs': True,})
         t.start()

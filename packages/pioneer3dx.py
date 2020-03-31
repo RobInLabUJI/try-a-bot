@@ -9,8 +9,8 @@ _c = rpyc.connect("localhost", 18861)
 
 def restartSimulation():
     _c.root.restartSimulation()
-    #_isInitialized = False
-    #_c = rpyc.connect("localhost", 18861)
+    _isInitialized = False
+    _c = rpyc.connect("localhost", 18861)
     
 def init():
     """Initialization.
