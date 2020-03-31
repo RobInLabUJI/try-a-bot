@@ -50,6 +50,7 @@ DEF PIONEER_3DX Pioneer3dx {
   rotation 0 1 0 1.5708
   controller "<extern>"
   synchronization FALSE
+  supervisor TRUE
   extensionSlot [
     Compass {
       translation 0 0 0

@@ -13,7 +13,7 @@ class RobotService(rpyc.Service):
         # (to finalize the service, if needed)
         pass
         
-    exposed_robot = Robot()
+    exposed_robot = Supervisor()
     
 if __name__ == "__main__":
     from rpyc.utils.server import ThreadedServer
