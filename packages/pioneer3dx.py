@@ -8,9 +8,11 @@ _isInitialized = False
 _c = rpyc.connect("localhost", 18861)
 
 def restartSimulation():
+    global _c
+    #global _isInitialized
     _c.root.restartSimulation()
-    _isInitialized = False
-    _c = rpyc.connect("localhost", 18861)
+    #_isInitialized = False
+    #_c = rpyc.connect("localhost", 18861)
     
 def init():
     """Initialization.
