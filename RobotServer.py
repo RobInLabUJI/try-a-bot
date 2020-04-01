@@ -25,7 +25,7 @@ TIME_STEP = 8
 
 robot = Supervisor()
 service = RobotService(robot)
-t = ThreadedServer(RobotService(), port=18861, protocol_config={'allow_public_attrs': True,})
+t = ThreadedServer(service, port=18861, protocol_config={'allow_public_attrs': True,})
 t.start()
 while robot.step(TIME_STEP) != -1:
    pass
