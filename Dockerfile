@@ -93,6 +93,8 @@ RUN chown -R jovyan.jovyan ${HOME}/.jupyter
 
 CMD ["jupyter", "lab", "--no-browser", "--ip=0.0.0.0", "--NotebookApp.token=''"]
 
+RUN pip3 install rpyc
+
 ENV WEBOTS_HOME ${HOME}/webots
 ENV LD_LIBRARY_PATH /usr/lib/x86_64-linux-gnu:/usr/lib/i386-linux-gnu:/usr/local/nvidia/lib:/usr/local/nvidia/lib64:${WEBOTS_HOME}/lib/controller
 ENV PYTHONPATH ${WEBOTS_HOME}/lib/controller/python36:/home/jovyan/work

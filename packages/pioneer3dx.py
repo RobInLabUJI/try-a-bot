@@ -2,8 +2,19 @@ from controller import *
 
 import math, time
 
-_isInitialized = False
+import rpyc
 
+_isInitialized = False
+_c = rpyc.connect("localhost", 18861)
+
+def restartSimulation():
+    global _c
+    global _isInitialized
+    _c.root.restartSimulation()
+    _isInitialized = False
+    _c = rpyc.connect("localhost", 18861)
+    init()
+    
 def init():
     """Initialization.
 
@@ -21,7 +32,8 @@ def init():
     
     if not _isInitialized:
         _isInitialized = True
-        _robot = Robot()
+        _robot = _c.root.robot
+        #_robot = Robot()
         _timestep = int(_robot.getBasicTimeStep())
         _leftMotor = _robot.getMotor('left wheel')
         _rightMotor = _robot.getMotor('right wheel')
