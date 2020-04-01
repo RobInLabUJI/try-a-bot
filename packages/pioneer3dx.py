@@ -13,6 +13,7 @@ def restartSimulation():
     _c.root.restartSimulation()
     _isInitialized = False
     _c = rpyc.connect("localhost", 18861)
+    init()
     
 def init():
     """Initialization.
